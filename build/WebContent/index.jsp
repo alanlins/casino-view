@@ -16,6 +16,43 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <script src="js/jquery-1.9.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	$(".idToDelete").click(function(){
+		
+		
+		
+		
+		var id = JSON.stringify($(this).data("id"));
+		
+		 $.ajax({
+     		    beforeSend: function(xhrObj){
+			        xhrObj.setRequestHeader("Content-Type","application/json");
+			        xhrObj.setRequestHeader("Accept","application/json");
+			   },
+	           type: "POST",
+	           url: "http://localhost:9010/casino/players/delete",
+	           dataType: "json",
+	           success: function (msg) {
+	              
+	        	   location.reload();
+	           },
+               error:function(msg){
+            	   
+            	   alert("Não deu pra deletar, brother.");
+               },
+	           data: id
+	       });
+		
+	});
+	
+	
+	
+});
+
+</script>
 
 </head>
 
